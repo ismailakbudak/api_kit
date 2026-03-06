@@ -2,8 +2,6 @@
 
 A lightweight Rails toolkit for building standardized, structured API responses with serialization, error handling, filtering, sorting, and pagination.
 
-> Building clean, consistent APIs shouldn't be rocket science. ApiKit provides simple, powerful modules to get you up and running quickly.
-
 ## Features
 
 ApiKit offers a collection of lightweight modules that integrate seamlessly with your Rails controllers:
