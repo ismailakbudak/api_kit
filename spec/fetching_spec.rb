@@ -116,7 +116,7 @@ RSpec.describe UsersController, type: :request do
 
         it do
           expect(response).to have_http_status(:ok)
-          expect(response_json['data']).to eq({ "first_name" => user.first_name, "notes" => [{ "id" => note.id }] })
+          expect(response_json['data']).to eq({ "first_name" => user.first_name, "notes" => [ { "id" => note.id } ] })
         end
       end
 

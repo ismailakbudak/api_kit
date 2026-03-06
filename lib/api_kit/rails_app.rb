@@ -109,7 +109,7 @@ module ApiKit
         if many
           data = ActiveModelSerializers::SerializableResource.new(resource, options).as_json
         else
-          data = ActiveModelSerializers::SerializableResource.new([resource], options).as_json[0]
+          data = ActiveModelSerializers::SerializableResource.new([ resource ], options).as_json[0]
         end
         result[:data] = data
         result.to_json

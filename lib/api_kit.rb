@@ -1,6 +1,6 @@
 require "api_kit/errors"
 require "api_kit/error_serializer"
-require 'api_kit/fetching'
+require "api_kit/fetching"
 require "api_kit/filtering"
 require "api_kit/pagination"
 require "api_kit/rails_app"
