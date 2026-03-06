@@ -23,7 +23,7 @@ ApiKit offers a collection of lightweight modules that integrate seamlessly with
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "api_kit"
+gem "rails_api_kit"
 ```
 
 And then execute:
@@ -37,8 +37,8 @@ And then execute:
 Add this to an initializer:
 
 ```ruby
-# config/initializers/api_kit.rb
-require "api_kit"
+# config/initializers/rails_api_kit.rb
+require "rails_api_kit"
 
 ApiKit::RailsApp.install!
 ```

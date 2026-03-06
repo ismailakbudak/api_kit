@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'api_kit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'api_kit'
+  spec.name          = 'rails_api_kit'
   spec.version       = ApiKit::VERSION
   spec.authors       = [ 'Ismail Akbudak' ]
   spec.email         = [ 'isoakbudak@gmail.com' ]
