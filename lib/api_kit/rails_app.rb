@@ -137,6 +137,11 @@ module ApiKit
       "#{klass.name}Serializer".constantize
     end
 
+    # Resolves the singular model name for sparse fieldsets
+    #
+    # @param many [Boolean] indicates whether the resource is a collection
+    # @param resource [Object] serialized resource or collection
+    # @return [String, nil] singular model name when available
     def self.fetch_name(many, resource)
       if many
         if resource.is_a?(ActiveRecord::Relation)
