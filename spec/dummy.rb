@@ -53,6 +53,19 @@ class Note < ApplicationRecord
   belongs_to :user, required: true
 end
 
+class RuntimeCustomNote
+  include ActiveModel::Model
+  include ActiveModel::Serialization
+
+  ATTRIBUTES = %w[id title quantity created_at updated_at user].freeze
+
+  attr_accessor(*ATTRIBUTES.map(&:to_sym))
+
+  def attributes
+    ATTRIBUTES.index_with { nil }
+  end
+end
+
 class CustomNoteSerializer < ActiveModel::Serializer
   attributes :id, :title, :quantity, :created_at, :updated_at
   belongs_to :user
@@ -61,6 +74,16 @@ end
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :last_name, :created_at, :updated_at, :first_name
   has_many :notes, serializer: CustomNoteSerializer
+  belongs_to :custom_note, serializer: CustomNoteSerializer do
+    RuntimeCustomNote.new(
+      id: 1,
+      title: "My",
+      quantity: 1,
+      created_at: Time.current,
+      updated_at: Time.current,
+      user: nil
+    )
+  end
 
   def first_name
     if @instance_options.dig(:params, :first_name_upcase)

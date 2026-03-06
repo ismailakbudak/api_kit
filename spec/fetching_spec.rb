@@ -60,11 +60,27 @@ RSpec.describe UsersController, type: :request do
 
         it do
           expect(response).to have_http_status(:ok)
+          expect(response_json['data'].last.keys).not_to include('custom_note')
           expect(response_json['data'].last['notes'].size).to eql(1)
           expect(response_json['data'].last['notes'][0]).to eql({
             'title' => note.title,
             'updated_at' => note.updated_at.as_json
           })
+        end
+      end
+
+      context 'returns customers included runtime structs' do
+        let(:params) do
+          {
+            include: 'custom_note',
+            fields:  { custom_note: 'title,updated_at' }
+          }
+        end
+
+        it do
+          expect(response).to have_http_status(:ok)
+          expect(response_json['data']).to all(include('custom_note'))
+          expect(response_json['data'].first['custom_note']).to include('title' => "My", 'quantity' => 1)
         end
       end
     end
